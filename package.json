@@ -1,0 +1,25 @@
+{
+  "name": "elk_stack",
+  "version": "1.0.0",
+  "description": "Learning ELK stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taraksuthar1999/ELK_stack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taraksuthar1999/ELK_stack/issues"
+  },
+  "homepage": "https://github.com/taraksuthar1999/ELK_stack#readme",
+  "dependencies": {
+    "@elastic/ecs-winston-format": "^1.3.1",
+    "got": "^11.8.3",
+    "winston": "^3.7.2"
+  }
+}
