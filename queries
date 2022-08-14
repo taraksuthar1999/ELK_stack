@@ -1,0 +1,40 @@
+ queries
+
+
+ PUT index 
+
+ PUT /my-index-000002
+{
+  "mappings": {
+    "dynamic": false,
+    "properties": {
+      "age":    { "type": "integer" },  
+      "email":  { "type": "keyword"  }, 
+      "name":   { "type": "text"  }     
+    }
+  }
+}
+
+
+search doc
+
+GET my-index-000002/_search
+{
+  "query": {
+    "term": {
+      "name": "chicky"
+    }
+  }
+}
+
+
+
+insert doc
+
+
+POST my-index-000002/_doc/
+{
+  "age":22,
+  "email":"chicky.suthar@yudiz.com",
+  "name":"chicky"
+}

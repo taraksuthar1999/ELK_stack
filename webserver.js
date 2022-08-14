@@ -1,7 +1,8 @@
-const http = require("http");
+const express = require("express");
 const winston = require("winston");
 const ecsFormat = require("@elastic/ecs-winston-format");
-
+const product = require("./Elastic");
+const app = express();
 const logger = winston.createLogger({
   level: "debug",
   format: ecsFormat({ convertReqRes: true }),
@@ -13,12 +14,16 @@ const logger = winston.createLogger({
   ],
 });
 
-const server = http.createServer((req, res) => {
-  res.setHeader("hello", "there");
-  res.end("ok");
-  logger.info("handled request", { req, res });
+app.get("/", async (req, res) => {
+  const result = await product.search(req.query.search);
+  res.json({ result });
+  logger.info("handled request", {
+    search: req.query.search,
+    result: result.hits.hits,
+    req,
+  });
 });
 
-server.listen(2080, () => {
-  logger.info("listening at port 2080");
+app.listen(2080, () => {
+  console.log("server up and running on port: 2080");
 });
